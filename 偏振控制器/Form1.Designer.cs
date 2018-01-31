@@ -61,6 +61,8 @@ namespace 偏振控制器
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBoxStepR = new System.Windows.Forms.TextBox();
+            this.textBoxStepL = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,7 +130,7 @@ namespace 偏振控制器
             // 
             // right
             // 
-            this.right.Location = new System.Drawing.Point(242, 202);
+            this.right.Location = new System.Drawing.Point(255, 202);
             this.right.Name = "right";
             this.right.Size = new System.Drawing.Size(83, 23);
             this.right.TabIndex = 8;
@@ -138,7 +140,7 @@ namespace 偏振控制器
             // 
             // left
             // 
-            this.left.Location = new System.Drawing.Point(242, 236);
+            this.left.Location = new System.Drawing.Point(255, 236);
             this.left.Name = "left";
             this.left.Size = new System.Drawing.Size(83, 23);
             this.left.TabIndex = 9;
@@ -231,11 +233,27 @@ namespace 偏振控制器
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // textBoxStepR
+            // 
+            this.textBoxStepR.Location = new System.Drawing.Point(164, 204);
+            this.textBoxStepR.Name = "textBoxStepR";
+            this.textBoxStepR.Size = new System.Drawing.Size(72, 21);
+            this.textBoxStepR.TabIndex = 19;
+            // 
+            // textBoxStepL
+            // 
+            this.textBoxStepL.Location = new System.Drawing.Point(164, 236);
+            this.textBoxStepL.Name = "textBoxStepL";
+            this.textBoxStepL.Size = new System.Drawing.Size(72, 21);
+            this.textBoxStepL.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 281);
+            this.Controls.Add(this.textBoxStepL);
+            this.Controls.Add(this.textBoxStepR);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxSpeed);
@@ -289,6 +307,8 @@ namespace 偏振控制器
         private Label label3;
         private Label label7;
         private System.Windows.Forms.Timer timer1;
+        private TextBox textBoxStepR;
+        private TextBox textBoxStepL;
     }
 }
 

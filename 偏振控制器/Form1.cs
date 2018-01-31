@@ -87,7 +87,7 @@ namespace 偏振控制器
                     if (strRec[2] == 'V')
                         this.textBoxSpeed.Text = strRec.Substring(3, r - 5);
 
-                    this.label3.Text = this.textBoxCount.Text + "/16";
+                    this.label3.Text = this.textBoxCount.Text + "/720";
 
                     right.Enabled = true;
                 }
@@ -103,15 +103,18 @@ namespace 偏振控制器
         {
            
             this.btnStartListen.Enabled = true;
+            this.right.Enabled = true;
             try
             {
                 socket.Shutdown(SocketShutdown.Both);
+                MessageBox.Show("异常状况0！");
                 socket.Close();
 
                 if (newSocket.Connected)
                 {
                     newSocket.Close();
                     thread.Abort();
+                    MessageBox.Show("异常状况！");
                 }
             }
 
@@ -122,6 +125,7 @@ namespace 偏振控制器
                 {
                     newSocket.Close();
                     thread.Abort();
+                    
                 }
 
             }
@@ -130,7 +134,7 @@ namespace 偏振控制器
         private void right_Click(object sender, EventArgs e)
         {
             this.right.Enabled = false;
-            string cmdst = ":F+#";
+            string cmdst = ":F+" + textBoxStepR.Text.ToString() + "#";
             try
             {                
                 byte[] buffer = Encoding.Default.GetBytes(cmdst);
