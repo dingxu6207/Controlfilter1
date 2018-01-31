@@ -81,7 +81,7 @@ namespace 偏振控制器
                     string strRec = Encoding.Default.GetString(buffer, 0, r);
                    
 
-                    if (strRec[2] == '+')
+                    if (strRec[2] == 'S')
                         this.textBoxCount.Text = strRec.Substring(3, r-5);
 
                     if (strRec[2] == 'V')
@@ -89,7 +89,8 @@ namespace 偏振控制器
 
                     this.label3.Text = this.textBoxCount.Text + "/720";
 
-                    right.Enabled = true;
+                    this.right.Enabled = true;
+                    this.left.Enabled = true;
                 }
                 catch
                 {
@@ -149,7 +150,8 @@ namespace 偏振控制器
 
         private void left_Click(object sender, EventArgs e)
         {
-            string cmdst = ":F-#";
+            this.left.Enabled = false;
+            string cmdst = ":F-" + textBoxStepL.Text.ToString() + "#";
             try
             {
                 byte[] buffer = Encoding.Default.GetBytes(cmdst);
