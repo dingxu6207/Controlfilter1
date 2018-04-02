@@ -207,7 +207,7 @@ namespace 偏振控制器
             this.textBoxSpeed.Name = "textBoxSpeed";
             this.textBoxSpeed.Size = new System.Drawing.Size(56, 21);
             this.textBoxSpeed.TabIndex = 16;
-            this.textBoxSpeed.Text = "500";
+            this.textBoxSpeed.Text = "10";
             // 
             // label3
             // 
