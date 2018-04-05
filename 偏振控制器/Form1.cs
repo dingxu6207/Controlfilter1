@@ -52,8 +52,9 @@ namespace 偏振控制器
 
             //监听客户端连接
             socket.Listen(10);
-            newSocket = socket.Accept();
            
+            newSocket = socket.Accept();
+
             //创建一个线程接收客户信息
             Control.CheckForIllegalCrossThreadCalls = false;//Added by ZXM on May 20,2010
 
@@ -105,6 +106,7 @@ namespace 偏振控制器
            
             this.btnStartListen.Enabled = true;
             this.right.Enabled = true;
+            this.left.Enabled = true;
             try
             {
                 socket.Shutdown(SocketShutdown.Both);
@@ -144,7 +146,7 @@ namespace 偏振控制器
             catch
             {
                 MessageBox.Show("监听尚未开始，关闭无效!");
-                this.right.Enabled = true;
+                
             }
         }
 
@@ -192,6 +194,34 @@ namespace 偏振控制器
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.label7.Text = DateTime.Now.ToLongTimeString().ToString(); 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                socket.Shutdown(SocketShutdown.Both);
+                MessageBox.Show("异常状况0！");
+                socket.Close();
+
+                if (newSocket.Connected)
+                {
+                    newSocket.Close();
+                    thread.Abort();
+                    MessageBox.Show("异常状况！");
+                }
+            }
+
+            catch
+            {
+                socket.Close();
+                if (newSocket.Connected)
+                {
+                    newSocket.Close();
+                    thread.Abort();
+                }
+
+            }
         }
 
     }
